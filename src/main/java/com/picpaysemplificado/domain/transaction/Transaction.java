@@ -14,22 +14,23 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of="id")
+@Builder
 public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal amount; // quantia
+    private BigDecimal amount;
 
     // um usuário pode ter várias tranzações, mais uma uma trazaçao pode ter um sender e um receptor
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private User sender; // remetente
+    private User sender;
 
     @ManyToOne
     @JoinColumn(name = "receiver_id")
-    private User receiver; // destinatário
+    private User receiver;
 
     private LocalDateTime timestamp;
 }
